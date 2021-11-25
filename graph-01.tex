@@ -1,0 +1,23 @@
+\begin{center}
+  \begin{tikzpicture}[blue, scale=1.5]
+    \node[draw,circle] (V1) at (0,1) {1};
+    \node[draw,circle] (V2) at (1,2) {2};
+    \node[draw,circle] (V3) at (1,0) {3};
+    \node[draw,circle] (V4) at (2,2) {4};
+    \node[draw,circle] (V5) at (2,0) {5};
+    \node[draw,circle] (V6) at (3,2) {6};
+    \node[draw,circle] (V7) at (3,0) {7};
+    \node[draw,circle] (V8) at (4,1) {8};
+    \draw[->] (V1) -- (V2) ;
+    \draw[->] (V3) -- (V1);
+    \draw[->] (V2) -- (V3) node[midway, sloped, above] {$[\ell_{ij},u_{ij}]$};
+    \draw[->] (V3) -- (V5);
+    \draw[->] (V2) to[bend left] (V4) ;
+    \draw[->] (V4) to[bend left] (V2) ;
+    \draw[->] (V5) to[bend left] (V4) ;
+    \draw[->] (V4) to[bend left] (V5) ;
+    \draw[->] (V7) to[bend left] (V6) ;
+    \draw[->] (V6) to[bend left] (V7) ;
+  \end{tikzpicture}
+\end{center}
+

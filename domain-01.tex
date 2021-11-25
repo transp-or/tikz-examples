@@ -1,0 +1,17 @@
+\begin{tikzpicture}[blue,thick,scale=0.9]
+  \draw[->,-latex] (0,0) -- (10,0) ;
+  \draw[->,-latex] (0,0) -- (0,5) ;
+  
+  \draw (0,3.22)--(8.2,1.4) ;
+  \draw (8.2,1.4)--(7.18,0) ;
+  
+  \foreach \x/\xtext in {0,1,...,9} {
+    \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below]
+         {$\xtext$};
+  }
+  
+  \foreach \y/\ytext in {0,1,...,4} {
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left]
+         {$\ytext$};
+  }
+\end{tikzpicture}

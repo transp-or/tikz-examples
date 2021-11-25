@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=0.6]
+  \begin{axis}[
+      width=12cm,
+      view={25}{45},
+      enlargelimits=false,
+      grid=none,
+      domain=-10:10,
+      y domain=-10:10,
+      xmin=-10.1,
+      xmax = 10.1,
+      zmin=-100,
+      zmax=500,    
+      samples=21,
+      xlabel=$x_1$,
+      ylabel=$x_2$,
+      thick,
+      zlabel={$\frac{1}{2} x_1^2 + \frac{9}{2} x_2^2$}
+    ]
+    \addplot3[
+      no markers,
+      blue,
+      raw gnuplot,
+      z filter/.code={\def\pgfmathresult{-100}},
+      mesh=false
+    ] gnuplot {
+      set contour base;
+      set nosurface;
+      set cntrparam levels 15;
+      set isosamples 100;
+      set samples 50;
+      splot [-10:10][-10:10] 0.5 * x * x + 4.5 * y * y ;
+    };    
+    \addplot3[surf]  {0.5 * x * x + 4.5 * y * y} ;
+    \addplot3[mark=*] coordinates {(10, 1, -100)};x
+    \draw[thick,->] (axis cs:10, 1, -100) -- (axis cs:6.284, -2.345, -100) ;
+  \end{axis}
+\end{tikzpicture} 
+

@@ -1,0 +1,33 @@
+\definecolor{cof}{RGB}{219,144,71}
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg, main}
+\begin{tikzpicture}[blue,scale=2]
+  \node[draw,circle] (V1) at (0,1) {1};
+  \node[draw,circle] (V2) at (1,2) {2};
+  \node[draw,circle] (V3) at (1,0) {3};
+  \node[draw,circle] (V4) at (2,2) {4};
+  \node[draw,circle] (V5) at (2,0) {5};
+  \node[draw,circle] (V6) at (3,2) {6};
+  \node[draw,circle] (V7) at (3,0) {7};
+  \node[draw,circle] (V8) at (4,1) {8};
+  
+  \draw[->] (V1) -- (V2) node[midway,above,cof,sloped] {\small$[1,3]$};
+  \draw[->] (V3) -- (V1)node[midway,below,cof,sloped] {\small$[-1,4]$};
+  \draw[->] (V2) -- (V3)node[midway,above,cof,sloped] {\small$[-1,1]$} ;
+  \draw[->] (V3) -- (V5)node[midway,below,cof,sloped] {\small$[-10,10]$};
+  \draw[->] (V2) to[bend left] node[midway,above,cof,sloped] {\small$[-3,-1]$}(V4) ;
+  \draw[->] (V4) to[bend left] node[midway,below,cof,sloped] {\small$[0,4]$}(V2) ;
+  \draw[->] (V5) to[bend left] node[midway,left,cof,sloped] {\small$[-5,0]$}(V4) ;
+  \draw[->] (V4) to[bend left] node[midway,left,cof,sloped] {\small$[-5,0]$}(V5) ;
+  \draw[->] (V7) to[bend left] node[midway,right,cof,sloped] {\small$[-3,3]$}(V6) ;
+  \draw[->] (V6) to[bend left] node[midway,right,cof,sloped] {\small$[-3,3]$}(V7) ;
+  
+  \begin{pgfonlayer}{bg}
+    \node[fill=red!10,fit=(V4) (V6) (V8)] {};
+    \node[fill=red!10,fit=(V1) (V2) (V3)] {};
+    \node[fill=red!10,fit=(V3) (V5) (V7)] {};
+    \draw (3.9,2) node {$\mathcal{N}\setminus\mathcal{M}$};
+    \draw (0,0) node {$\mathcal{M}$};
+  \end{pgfonlayer}
+  
+\end{tikzpicture}

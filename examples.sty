@@ -1,0 +1,26 @@
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc, arrows, arrows.meta, shapes, fit, spy, patterns}
+\usepackage{pgfplots}
+\usepackage{courier}
+\usepackage{listings}
+\lstset{basicstyle=\tiny\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt,frame=bottomline}
+
+\newcommand{\withcode}[2]{
+  \begin{figure}
+    \begin{center}
+      \input{#1} 
+    \end{center}
+    \lstinputlisting{#1}
+    \caption{#2}
+\end{figure}}
+
+
+\newcommand{\withoutcode}[2]{
+  \begin{figure}
+    \begin{center}
+      \input{#1} 
+    \end{center}
+    File: \texttt{#1.tex}
+    \caption{#2}
+\end{figure}}

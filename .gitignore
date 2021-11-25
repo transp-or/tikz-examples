@@ -1,0 +1,9 @@
+
+*.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.gnuplot
+*.table

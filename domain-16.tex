@@ -1,0 +1,14 @@
+\begin{tikzpicture}[thick]
+  \node (a) [
+    cylinder,
+    shape border rotate=90,
+    draw,
+    minimum height=30mm,
+    minimum width=15mm
+  ] {};
+  \draw [<->] ([xshift=5pt] a.before bottom) --
+              ([xshift=5pt] a.after top)
+    node [midway, right] {$h$};
+  \coordinate (center) at ($(a.before top)!0.5!(a.after top)$);
+  \draw [<->] (a.before top) -- (center) node [midway] {$r$};
+\end{tikzpicture}

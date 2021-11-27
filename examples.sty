@@ -1,7 +1,9 @@
 \usepackage{etex}
 \usepackage[pspdf={-dDELAYSAFER}]{auto-pst-pdf}
+\usepackage{fp}
 \usepackage{tikz}
-\usetikzlibrary{positioning, calc, arrows, arrows.meta, shapes, fit, spy, patterns}
+\usetikzlibrary{positioning, calc, arrows, arrows.meta, shapes, fit,
+  spy, patterns, math}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.17}
@@ -10,6 +12,7 @@
 \lstset{basicstyle=\tiny\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt,frame=bottomline}
 \usepackage{epsfig}
+\usepackage{fp}
 
 \newcommand{\withcode}[2]{
   \begin{figure}

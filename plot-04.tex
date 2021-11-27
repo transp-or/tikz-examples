@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+  \draw[
+    domain=-3:3,
+    smooth,
+    variable=\x,
+    blue
+  ] plot ({\x}, {\x * \x / 2.0});
+  \draw[red] (-3, 4) -- (0, -2)  ;
+  \draw[red] (-1, -1.5) -- (3, 2.5) ;
+  \draw[red] (-3, 0.295) -- (3, -0.305)  ;
+\end{tikzpicture}
+

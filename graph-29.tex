@@ -1,0 +1,80 @@
+\definecolor{epfl_red}{RGB}{217, 0, 0}
+\tikzstyle{input}=[draw, ellipse]
+\tikzstyle{block}=[draw, fill=black!15, rectangle,  minimum height=3em, minimum width=6em]
+\tikzstyle{state}=[
+  rectangle, 
+  rounded corners, 
+  draw=black, 
+  minimum height=2em, 
+  inner sep=2pt, 
+  text centered,
+]
+\begin{tikzpicture}[scale=0.7]
+  \node[state, anchor=center, yshift=-0cm] (spatiotemp) {
+    \begin{tabular}{c} Spatio-temporal \\ observations \end{tabular}
+  };	
+  \node [state, left of=spatiotemp, node distance=4cm, anchor=center, yshift=-0cm] (TTTsurvey) {
+    \begin{tabular}{c} Train timetable, \\ travel surveys \end{tabular}
+  };
+  \node [state, right of=spatiotemp, node distance=4cm, anchor=center, yshift=-0cm] (layout) {
+    \begin{tabular}{c} Layout of \\ walking facilities \end{tabular}
+  };
+  \node[
+    block,
+    below left of=spatiotemp,
+    node distance=3cm,
+    anchor=center,
+    xshift=-1.5cm,
+    yshift=-1cm
+  ] (demandest) {
+    \parbox{3cm}{\center \color{blue}\textbf{Demand} \\ \textbf{estimation}}
+  };
+  \node[
+    block,
+    below right of=spatiotemp,
+    node distance=3cm,
+    anchor=center,
+    xshift=1.5cm,
+    yshift=-1cm
+  ] (traffass) {
+    \parbox{3.5cm}{
+      \center \vspace{-0.3cm} \textbf{\color{epfl_red}{Traffic assignment}} \\ \vspace{0.1cm}
+    }
+  };
+  \draw [style=dashed, thick, rounded corners] (-5.8, -4.3) rectangle (6.05, -1.9);
+  \draw [
+    -latex,
+    very thick,
+    bend left,
+    out=22.5,
+    in=180-22.5,
+    epfl_red
+  ] (traffass.182) to node {supply} (demandest.-02) ;
+  \draw [
+    -latex,
+    very thick,
+    bend left,
+    out=22.5,
+    in=180-22.5,
+    blue
+  ] (demandest.02) to node {demand} (traffass.178) ;
+  \draw [-latex, thick, bend left] (TTTsurvey.south) to [out=-8, in=172] ([xshift=-5]demandest.north); 
+  \draw [-latex, thick, bend right](spatiotemp.south) to [out=35, in=235] ([xshift=5]demandest.north); 
+  \draw [-latex, thick, bend right](layout.south) to [out=35, in=205] ([xshift=15]demandest.north); 
+  \draw [-latex, thick, bend right](layout.south) to [out=6, in=193] (traffass.north);
+  \node [
+    input,
+    below of=demandest,
+    node distance=2.75cm,
+    anchor=center, xshift=25
+  ] (ODtriptable) {Dynamic trip table};
+  \node [
+    input,
+    below of=traffass,
+    node distance=2.75cm,
+    anchor=center,
+    xshift=-25
+  ] (LOS) {Travel time, occupation};
+  \draw [-latex, thick, bend right, blue](demandest) to (ODtriptable);
+  \draw [-latex, thick, bend left, epfl_red](traffass) to (LOS);
+\end{tikzpicture}

@@ -1,0 +1,115 @@
+\begin{tikzpicture}[scale=0.5]
+  \tikzset{
+    >=stealth,
+    parent node/.style={
+      rectangle split,
+      rectangle split parts=2,
+      align=left,
+      text width=3cm,
+      draw,
+      node distance=1cm and 1cm
+    }
+  }
+  \node[
+    parent node,
+    rectangle split parts=1,
+    fill=gray!20
+  ] (A) {$P$: L \\ $LB=486$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 5,
+    below left =of A,
+    fill=gray!20
+  ] (B) {$P_1$: L $\to$ B \\ $LB=486$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 5,
+    below right =of A
+  ] (C) {$P_3$: L $\to$ Z \\ $LB=548$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2,
+    below =of A
+  ](D){$P_2$: L $\to$ G \\ $LB=486$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01, 
+    below =of B
+  ] (E) {$P_{12}$: L $\to$ B $\to$ G \\ $LB=502.5$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.1,
+    below left =of B,
+    fill=gray!20
+  ] (F) {$P_{11}$: L $\to$ B $\to$ Z \\ $LB=486$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below =of F,
+    fill=gray!20
+  ] (H) {L $\to$ B $\to$ Z $\to$ G $\to$ L \\ $f^*=572$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below =of E
+  ] (II) {L $\to$ B $\to$ G $\to$ Z $\to$ L \\ $f^*$=769};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.1, 
+    below right =of C
+  ] (J) {$P_{32}$: L $\to$ Z $\to$ G \\ $LB=685.5$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below=of C
+  ] (K) {$P_{31}$: L $\to$ Z $\to$ B \\ $LB=548$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below =of K
+  ] (L) {L $\to$ Z $\to$ B $\to$ G $\to$ L \\ $f^*=575$};
+
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01, 
+    below right =of D
+  ] (N) {$P_{22}$: L $\to$ G $\to$ B \\ $LB=502.5$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below left =of D
+  ] (O) {$P_{21}$: L $\to$ G $\to$ Z \\ $LB=572$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 0.01,
+    below =of N
+  ] (P) {L $\to$ G $\to$ B $\to$ Z $\to$ L \\ $f^*=575$};
+
+  \draw[->](A.south)--+(0, -0.5)-|(B);
+  \draw[->](A.south)--+(0, -0.5)-|(C);
+  \draw[->](A.south)--+(0, -0.5)-|(D);
+  \draw[->](B.south)--+(0, -0.5)-|(E);
+  \draw[->](B.south)--+(0, -0.5)-|(F);
+  \draw[->](F.south)--+(0, -0.5)-|(H);
+  \draw[->](K.south)--+(0, -0.5)-|(L);
+  \draw[->](C.south)--+(0, -0.5)-|(J);
+  \draw[->](C.south)--+(0, -0.5)-|(K);
+  \draw[->](E.south)--+(0, -0.5)-|(II);
+  \draw[->](D.south)--+(0, -0.5)-|(N);
+  \draw[->](D.south)--+(0, -0.5)-|(O);
+  \draw[->](N.south)--+(0, -0.5)-|(P);
+  
+\end{tikzpicture}

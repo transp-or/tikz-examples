@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+  \begin{axis}[
+      xlabel={$\varepsilon$}, 
+      ylabel={$f_{\varepsilon_n}(\varepsilon)$}, 
+      axis lines=center, 
+      samples=41, 
+      domain=-3.5:3.5, 
+      xmin=-3.5, 
+      xmax=3.5, 
+      ymin=-0.1, 
+      ymax=0.5, 
+      axis on top, 
+      ticks=none, 
+    ]
+    \addplot+[name path=f, no marks, thick] {0.398942280401433 * exp(-0.5 * x^2)};
+    \path[name path=axis] (axis cs:0, 0) -- (axis cs:1.2, 0);
+    \addplot [
+      color=gray!10, 
+      fill=gray!10, 
+    ]
+    fill between[
+      of=f and axis, 
+      soft clip={domain=-3.5:1.2}, 
+    ];
+    \addplot +[mark=none, thick] coordinates {(1.2, -0.01) (1.2, 0)};
+    \node [below] at (axis cs:1.2, -0.01) {$V_{in}-V_{jn}$};
+  \end{axis}
+\end{tikzpicture}

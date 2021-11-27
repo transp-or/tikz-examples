@@ -7,3 +7,5 @@
 *.log
 *.gnuplot
 *.table
+3d_contourtmp0.dat
+3d_contourtmp0.script

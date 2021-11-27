@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+  \begin{axis}[view={0}{90}, domain=-1.5:1.5, domain y=-8:8]
+    \addplot3[
+      contour gnuplot={labels=false, number=40, handler/.style=smooth},
+      samples=51,
+    ] {0.5*x^2+x*cos(deg(y))};
+    \node[
+      label={[left, xshift=1mm] $x^*_0$},
+      minimum size=1pt
+    ] at (axis cs: -1, 3.1415*0){$\bullet$} ;
+    \node[
+      label={[right, xshift=-1mm] $x^*_1$},
+      minimum size=1pt
+    ] at (axis cs: 1, 3.1415*1){$\bullet$} ;
+    \node[
+      label={[right, xshift=-1mm] $x^*_{-1}$},
+      minimum size=1pt
+    ] at (axis cs:1, -3.1415*1){$\bullet$};
+    \node[
+      label={[left, xshift=1mm] $x^*_2$},
+      minimum size=1pt
+    ] at (axis cs: -1, 3.1415*2){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm] $x^*_{-2}$},
+      minimum size=1pt
+    ] at (axis cs: -1, -3.1415*2){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm] $\bar{x}_{0}$},
+      minimum size=1pt
+    ] at (axis cs: 0, 1.5708+0*3.1415){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm] $\bar{x}_{1}$},
+      minimum size=1pt
+    ] at (axis cs: 0, 1.5708+1*3.1415){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm] $\bar{x}_{-1}$},
+      minimum size=1pt
+    ] at (axis cs: 0, 1.5708-1*3.1415){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm, yshift=-2mm] $\bar{x}_{2}$},
+      minimum size=1pt
+    ] at (axis cs: 0, 1.5708+2*3.1415){$\bullet$} ;
+    \node[
+      label={[left, xshift=1mm] $\bar{x}_{-2}$},
+      minimum size=1pt
+    ] at (axis cs: 0, 1.5708-2*3.1415){$\bullet$} ;
+  \end{axis}
+\end{tikzpicture}
+

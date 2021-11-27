@@ -1,0 +1,15 @@
+\begin{tikzpicture}[blue,thick]
+  \node (NG) at (0, 0) [circle, draw, label=below:Geneva] {G} ; 
+  \node (NL) at (2, 0) [circle, fill=blue!10, draw, label=below:Lausanne] {L} ; 
+  \node (NB) at (5, 1) [circle, draw, label=right:Bern] {B} ; 
+  \node (NZ) at (6, 3) [circle, draw, label=right:Z\"urich] {Z} ; 
+  
+  \draw (NG) -- (NL) node[midway, below] {$64$} ;
+  \draw (NG) -- (NB) node[midway, above, sloped] {$158$} ;
+  \draw (NG) -- (NZ) node[midway, above, sloped] {$279$} ;
+  \draw (NL) -- (NB) node[midway, below, sloped] {$104$} ;
+  \draw (NL) -- (NZ) node[midway, below, sloped] {$228$} ;
+  \draw (NZ) -- (NB) node[midway, below, sloped] {$125$} ;
+\end{tikzpicture}
+
+

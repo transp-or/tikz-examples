@@ -1,0 +1,19 @@
+\definecolor{cof}{RGB}{219, 144, 71}
+\begin{tikzpicture}[blue]
+  \def \b {3}
+  \def \a {\b * 1.618}
+  \def \c {\a + \b}
+  \def \m {\c / 2}
+
+  \draw (0, 0) rectangle (\a, \a);
+  \draw[fill=cof] (\a, 0) rectangle (\c, \a);
+  \draw (\a / 2, -0.5) node {$a$} ;
+  \draw[-latex] (\a / 2 + 0.2, -0.5) -- (\a, -0.5) ;
+  \draw[-latex] (\a / 2 - 0.2, -0.5) -- (0, -0.5) ;
+  \draw (\a + \b / 2, -0.5) node {$b$} ;
+  \draw[-latex] (\a + \b / 2 + 0.2, -0.5) -- (\c, -0.5) ;
+  \draw[-latex] (\a + \b / 2 - 0.2, -0.5) -- (\a, -0.5) ;
+  \draw (-0.5, \a / 2) node {$a$} ;
+  \draw[-latex] (-0.5, \a / 2 + 0.2) -- (-0.5, \a);
+  \draw[-latex] (-0.5, \a / 2 - 0.2) -- (-0.5, 0);
+\end{tikzpicture}

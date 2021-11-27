@@ -1,0 +1,9 @@
+\begin{tikzpicture}[blue, thick]
+  \node (No) at (0, 0) [circle, draw] {$o$} ; 
+  \node (Ni) at (6, -1) [circle, draw, label={above right}:{$\lambda_i=3$}] {$i$} ; 
+  \node (Nj) at (4, 2) [circle, draw, label={$\lambda_j=5$}] {$j$} ; 
+  
+  \draw[-latex] (No) .. controls +(1, 2) and +(-1, -2) .. (Nj) ;
+  \draw[-latex] (No) .. controls +(1, -2) and +(1, -2) .. (Ni) ;
+  \draw[-latex, red] (Ni) -- (Nj) node[midway, sloped, above] {$c_{ij}=1$};
+\end{tikzpicture}

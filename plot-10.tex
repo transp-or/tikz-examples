@@ -1,0 +1,30 @@
+\definecolor{cof}{RGB}{219,144,71}
+\begin{tikzpicture}[
+  spy using outlines={blue, circle, magnification=3, size=4cm, connect spies},
+  blue
+]
+  \begin{axis}[
+      domain=1:6, 
+      xmin=1, 
+      xmax=6, 
+      ymin=-15, 
+      ymax=25, 
+      samples=141, 
+      xlabel=$x$, 
+      ylabel={$f(x) = -x^4 + 12\, x^3 - 47 \, x^2 + 60\, x$}, 
+    ]
+    \addplot[thick, cof, mark=none] {-x^4 + 12 * x^3 - 47 * x^2 + 60 * x};
+    \addplot[
+      thick,
+      dotted,
+      red,
+      mark=none] {-1.14746260501326+(x-3.636363636363636)*1.8782870022539555+0.5*(x-3.636363636363636)^2*9.140495867768607};
+    \addplot[mark=square*] coordinates {(3.430872924543809, -1.3201436784795249)};
+    \addplot[thick, blue, mark=none] coordinates {(3.430872924543809, -1.3201436784795249) (3.430872924543809, -1.3404478715608068)};
+    \coordinate (spypoint) at (axis cs:3.43, -1.340);
+    \coordinate (magnifyglass) at (axis cs:7.2, 10);
+  \end{axis}
+  \spy[orange] on (spypoint) in node[fill=white] at (magnifyglass);
+ \end{tikzpicture}
+
+

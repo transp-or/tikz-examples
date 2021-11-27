@@ -1,0 +1,12 @@
+\begin{tikzpicture}[scale=2]
+  \tikzstyle{Cir}=[circle, minimum width=11pt, draw, inner sep=0pt]
+  \draw (0, 0) ellipse[x radius=3, y radius= 1.5];
+  \node[at={(1, 1.6)}] {$X$} ;
+  \node[at={(1, 0)}, circle, fill, label=$x$] {} ;
+  \node[at={(2, 0)}, circle, fill, label=$z$] {} ;
+  \draw (1, 0) circle[radius=1];
+  \draw [Circle-] (1, 0) -- node[left, red] {$\varepsilon$} (60:1);  
+  \draw[-latex] (1, 0) -- (2.3, 0)  node[above] {$d$};
+  \draw[-latex] (1, 0) -- (2.3, 0)  node[above] {$d$};
+\end{tikzpicture}
+

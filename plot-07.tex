@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+  \begin{axis}[
+      xlabel={$x$},
+      ylabel={$f_2(x)=1/|x|$},
+      axis on top=true,
+      axis lines=middle,
+      samples=41,
+      thick,
+      xmin=-4,
+      xmax=4,
+      ymin=-0.5,
+      ymax=6,
+      axis y line=left,
+    ]
+    \fill[
+      fill=gray!15,
+      fill opacity=0.2,
+      draw=none
+    ] (-1,0) rectangle (2,6) ;
+    \addplot+[
+      domain=-4:-0.1,
+      no marks,
+      blue,
+    ]  {1/abs(x)};
+    \addplot+[
+      domain=0.1:4,
+      no marks,blue
+    ]  {1/abs(x)};
+  \end{axis}
+\end{tikzpicture}

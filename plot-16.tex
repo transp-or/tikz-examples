@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+  \begin{axis}[
+      area style,
+      ybar interval = 0.7,
+      ymin = 0,
+      ymax = 0.6,
+      xtick=data,
+      x=15ex,
+      ylabel=$\lambda$,
+      symbolic x coords={Low ($s$=1), Medium ($s=2$), High ($s=3$), Last},
+    ]
+    \addplot plot coordinates {(Low ($s$=1), 0.2) (Medium ($s=2$),
+      0.5)(High ($s=3$), 0.3) (Last, 0.3) };
+  \end{axis}
+\end{tikzpicture}

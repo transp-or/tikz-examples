@@ -1,0 +1,50 @@
+\begin{tikzpicture}[scale=0.5]
+  \begin{axis}[
+      xlabel={$t_1-t_2$}, 
+      ylabel={$c_1-c_2$}, 
+      axis equal, 
+      axis lines=center, 
+      axis on top, 
+      xtick=\empty, 
+      ytick=\empty, 
+      xmin=-3.5, 
+      xmax=3.5, 
+      ymin=-3, 
+      ymax=3, 
+      legend style={
+        at={(axis cs:0, -3)}, 
+        anchor=north, 
+      }, 
+      scale=2, 
+    ]
+    \addplot table [
+      x index=0, 
+      y index=1, 
+      col sep=space, 
+      only marks, 
+    ] {fig-BAL32a.dat};
+    \addlegendentry{Alt. 1 is chosen};
+    \addplot table[
+      x index=0, 
+      y index=1, 
+      col sep=space, 
+      only marks, 
+    ] {fig-BAL32b.dat};
+    \addlegendentry{Alt. 2 is chosen};
+    \addplot[
+      mark=none, 
+      thick, 
+    ]{-x/2} ;
+    \addlegendentry{$c_1+\beta t_1 = c_2+\beta t_2$}
+    \draw[very thick] (0, 0) -- (0, -0.5) node[midway, left] {$\beta$};
+    \draw[very thick] (0, -0.5) -- (1, -0.5) node[midway, below] {$1$};
+    \node at (axis cs:2, 2) {Alt. 2 is dominant} ;
+    \node at (axis cs:-2, -2) {Alt. 1 is dominant} ;
+    \node (A) at (3, -1.5) {};
+    \node (B) at (-3, 1.5) {};
+    \node (P) at (-2.6, 2) {Alt. 2 is preferred} ;
+    \node (Q) at (2.6, -2) {Alt. 1 is preferred} ;
+    \draw[-latex] ($(A)!(P)!(B)$) -- (P);
+    \draw[-latex] ($(A)!(Q)!(B)$) -- (Q);
+  \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,51 @@
+\definecolor{cof}{RGB}{219, 144, 71}
+ \begin{tikzpicture}[scale=0.75]
+  \begin{axis}[
+      3d box, 
+      width=12cm, 
+      view={119}{6}, 
+      enlargelimits=false, 
+      grid=major, 
+      domain=-0.5:1.5, 
+      y domain=-1.5:1.5, 
+      zmin=-5.5, 
+      zmax=4.5,   
+      samples=21, 
+      xlabel=$x_1$, 
+      ylabel=$x_2$, 
+      zlabel={$-x_1 - 2x_2$}, 
+    ]
+    %Feasible set at the bottom
+    \addplot3[fill=cof, opacity=0.9] coordinates {(0, 0, -5.5) (1, 0, -5.5) (0, 1, -5.5)} ;
+    %Constraints at the bottom
+    \addplot3[thick] coordinates {(1.1, 0.0, -5.5) (-0.1, 0.0, -5.5)} ;
+    \addplot3[thick] coordinates {(-0.1, 1.1, -5.5) (1.1, -0.1, -5.5)} ;
+    \addplot3[thick] coordinates {(0.0, 1.1, -5.5) (0.0, -0.1, -5.5)} ;
+    %Vertical rectangles
+    \addplot3[fill=cof, opacity=0.1] coordinates {(0, 0, -5.5) (0, 0, 0) (1, 0, -1) (1, 0, -5.5)};
+    \addplot3[fill=cof, opacity=0.1] coordinates {(1, 0, -5.5) (1, 0, -1) (0, 1, -2) (0, 1, -5.5)};
+    \addplot3[fill=cof, opacity=0.1] coordinates {(0, 0, -5.5) (0, 0, 0) (0, 1, -2) (0, 1, -5.5)};
+    %Surface
+    \addplot3 [surf, opacity=0.9]{ -x - 2 * y };
+    %Feasible set on the surface
+    \addplot3[fill=cof, opacity=0.3] coordinates {(0, 0, 0) (1, 0, -1) (0, 1, -2)} ;
+    %Constraints on the surface
+    \addplot3[thick, opacity=0.9] coordinates {(1.1, 0.0, -1.1) (-0.1, 0.0, 0.1)} ;
+    \addplot3[thick, opacity=0.9] coordinates {(-0.1, 1.1, -2.1) (1.1, -0.1, -0.9)} ;
+    \addplot3[thick, opacity=0.9] coordinates {(0.0, 1.1, -2.2) (0.0, -0.1, 0.2)} ;
+    %Optimal solution
+    \addplot3[mark=*, red] coordinates {(0, 1, -2)};
+    \addplot3[mark=*, red] coordinates {(0, 1, -5.5)};
+    %Arrows
+    \addplot3[ultra thick, -latex, red] coordinates {
+      (0, 1, -2)
+      (0.35355339059327373, 0.6464466094067263, -1.6464466094067263)
+    } ;
+    \addplot3[ultra thick, -latex, red] coordinates {
+      (0, 1, -5.5)
+      (0.35355339059327373, 0.6464466094067263, -5.5)
+    } ;
+    \addplot3[ultra thick, -latex, red] coordinates {(0, 1, -2) (0.0, 0.5, -1.0)} ;
+    \addplot3[ultra thick, -latex, red] coordinates {(0, 1, -5.5) (0.0, 0.5, -5.5)} ;
+  \end{axis}
+\end{tikzpicture}

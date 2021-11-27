@@ -1,0 +1,17 @@
+\begin{tikzpicture}[blue, thick, scale=1.5]
+
+  \node (N01) at (0, 1) [circle,  draw, label=Begin, red, very thick] {$o$} ; 
+  \node (N02) at (2, 1) [circle,  draw, label=Buy, red, very thick] {$1$} ; 
+  \node (N03) at (4, 0) [circle,  draw, label=below:Sauce] {$2$} ; 
+  \node (N04) at (4, 2) [circle,  draw, label=Dough, red, very thick] {$3$} ; 
+  \node (N05) at (6, 1) [circle,  draw, label=Bake, red, very thick] {$4$} ; 
+  \node (N06) at (8, 1) [circle,  draw, label=End, red, very thick] {$d$} ; 
+
+  \draw[-latex, red, very thick] (N01) -- (N02) node[midway, above] {$0$} ;
+  \draw[-latex] (N02) -- (N03) node[midway, above, sloped] {$30$} ;
+  \draw[-latex, red, very thick] (N02) -- (N04) node[midway, above, sloped] {$30$} ;
+  \draw[-latex] (N03) -- (N05) node[midway, above, sloped] {$20$} ;
+  \draw[-latex, red, very thick] (N04) -- (N05) node[midway, above, sloped] {$240$} ;
+  \draw[-latex, red, very thick] (N05) -- (N06) node[midway, above] {$12$} ;
+
+\end{tikzpicture}

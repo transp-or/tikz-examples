@@ -1,0 +1,48 @@
+\tikzset{
+  bnode/.style = {                                                     
+    draw,
+    text centered,
+    text width=3cm}
+}
+\begin{tikzpicture}[scale=1.0, every node/.style={transform shape}]
+  \node[bnode] (LOUISVIII) {
+    Louis VIII \\  1187--1226
+  };
+  \node[bnode, below left=of LOUISVIII] (LOUIS_IX) {
+    Louis IX \\ 1214 -- 1270
+  };
+  
+  \node[bnode, below=of LOUIS_IX] (PHIL_III) {
+    Philippe III \\ 1245--1285
+  };
+
+  \node[bnode, below right=of LOUISVIII] (CHI_ANJOU) {
+    Charles I d'Anjou\\ 1227 -- 1285
+  };
+  
+  \node[bnode, below=of CHI_ANJOU] (CHII_ANJOU) {
+    Charles II d'Anjou\\ 1254 -- 1309
+  };
+
+  \node[bnode, below=of CHII_ANJOU] (MARG_ANJOU) {
+    Marguerite d'Anjou\\ 1273 -- 1299
+  };
+
+  \node[bnode, below left=of MARG_ANJOU] (PH_VALOIS) {
+    Philippe VI \\ 1293-1350
+  };
+
+  \path let \p1=(PHIL_III), \p2=(MARG_ANJOU) in node[bnode] (CH_VALOIS) at (\x1,\y2)   {
+    Charles de Valois \\ 1270 -- 1325
+  }; 
+
+  \draw[-latex] (LOUISVIII) -- (LOUIS_IX) ;
+  \draw[-latex] (LOUIS_IX) --  (PHIL_III) ;
+  \draw[-latex] (PHIL_III) -- (CH_VALOIS) ;
+  \draw[-latex] (CH_VALOIS)  -- (PH_VALOIS) ;
+  \draw[-latex] (LOUISVIII) -- (CHI_ANJOU) ;
+  \draw[-latex] (CHI_ANJOU) -- (CHII_ANJOU) ;
+  \draw[-latex] (CHII_ANJOU) --(MARG_ANJOU) ;
+  \draw[-latex] (MARG_ANJOU) --(PH_VALOIS) ;
+  \draw[dotted] (CH_VALOIS) -- (MARG_ANJOU) ;
+\end{tikzpicture}

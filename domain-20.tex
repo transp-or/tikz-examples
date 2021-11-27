@@ -1,0 +1,222 @@
+\definecolor{od_green}{RGB}{0,161,75}
+\newcommand*\circled[1]{
+ \tikz[baseline=(char.base)]{
+  \node[shape=circle, draw, inner sep=2pt, solid, fill=white] (char) {#1};
+ }
+}
+\newcommand{\potF}[3]{%{x}{y}{color}, color=transparency 0<=col<=100
+ \FPeval{\CoordXOne}{#1*0.3-0.3}
+ \FPeval{\CoordYOne}{#2*0.3-0.4}
+ \FPeval{\CoordXTwo}{#1*0.3}
+ \FPeval{\CoordYTwo}{#2*0.3-0.1}
+ \FPeval{\Transp}{#3*(-5.8823529412) + 105.8823529412}
+ \fill [od_green!\Transp!white] (\CoordXOne, \CoordYOne) rectangle (\CoordXTwo, \CoordYTwo);
+}
+\begin{tikzpicture}
+  \def\hdA{0.9} \FPeval{\hdAm}{\hdA-0.1}
+  \def\hdB{1.8} \FPeval{\hdBp}{\hdB+0.2} \FPeval{\hdBpp}{\hdBp+0.2}
+  \def\hdC{3} \FPeval{\hdCm}{\hdC-0.1}
+  \def\hdD{3.9} \FPeval{\hdDp}{\hdD+0.15} \FPeval{\hdDpp}{\hdDp+0.2}
+  \def\hdE{4.5} \FPeval{\hdEm}{\hdE-0.1+0.3}
+  
+  % Activity cells: exits
+  %place holder to avoid shift
+  \fill [white] {
+    (\hdB, 5.3) rectangle (\hdC, 5.425)
+    (\hdA, -0.225) rectangle (\hdB, -0.1)
+    (\hdC, -0.225) rectangle (\hdD, -0.1)
+  };
+  \fill [pattern=north east lines] {
+    (\hdB, 5.3) rectangle (\hdC, 5.425)
+    (\hdA, -0.225) rectangle (\hdB, -0.1)
+    (\hdC, -0.225) rectangle (\hdD, -0.1)
+  };
+  
+  % system boundaries (black light)
+  \draw [rounded corners, dashed, fill=black!2!white] (0.3, -0.1) rectangle (\hdE, 5.3);
+  % system boundaries (red dashed -- topoligical)
+  \draw [rounded corners, dashed, red, fill=black!2!white] (0.3, -0.1) rectangle (\hdE, 5.3);
+  % sequence of areas for selected route
+  \fill [red!10!white] {
+    (\hdB, -0.1+4*0.3) rectangle (\hdC, -0.1+7*0.3)
+    (\hdA, -0.1+4*0.3) rectangle (\hdB, -0.1+16*0.3)
+    (1*0.3, -0.1+16*0.3) rectangle (8*0.3, -0.1+18*0.3)
+  };
+  % potential field
+  \potF{2}{18}{17} \potF{3}{18}{16} \potF{4}{18}{15}  \potF{5}{18}{14} \potF{6}{18}{13} \potF{7}{18}{14} \potF{8}{18}{15}
+  
+  \potF{2}{17}{16} \potF{3}{17}{15} \potF{4}{17}{14} \potF{5}{17}{13} \potF{6}{17}{12} \potF{7}{17}{13} \potF{8}{17}{14}
+		
+  \potF{4}{16}{13} \potF{5}{16}{12} \potF{6}{16}{11}
+  \potF{4}{15}{12} \potF{5}{15}{11} \potF{6}{15}{10}
+  \potF{4}{14}{11} \potF{5}{14}{10} \potF{6}{14}{9}
+
+  \potF{4}{13}{10} \potF{5}{13}{9} \potF{6}{13}{8}
+  \potF{4}{12}{9} \potF{5}{12}{8} \potF{6}{12}{7}
+  \potF{4}{11}{8} \potF{5}{11}{7} \potF{6}{11}{6}
+		
+  \potF{4}{10}{7} \potF{5}{10}{6} \potF{6}{10}{5}
+  \potF{4}{9}{6} \potF{5}{9}{5} \potF{6}{9}{4}
+  \potF{4}{8}{5} \potF{5}{8}{4} \potF{6}{8}{3}
+  
+  \potF{4}{7}{4} \potF{5}{7}{3} \potF{6}{7}{2}
+  \potF{7}{7}{1} \potF{8}{7}{1} \potF{9}{7}{1}
+  \potF{10}{7}{1}
+  
+  \potF{4}{6}{5} \potF{5}{6}{4} \potF{6}{6}{3} \potF{7}{6}{2} \potF{8}{6}{2} \potF{9}{6}{2} \potF{10}{6}{2}
+  \potF{4}{5}{6} \potF{5}{5}{5} \potF{6}{5}{4} \potF{7}{5}{3} \potF{8}{5}{3} \potF{9}{5}{3} \potF{10}{5}{3}
+
+  % cells
+  % vertical cell limits
+  \foreach \x in {0.3, 0.6, ..., \hdE} {
+    \draw [thin, gray, densely dotted] (\x, -0.1) -- (\x, 5.3);
+  };
+  % horizontal cell limits
+  \foreach \y in {0.2, 0.5, ..., 5.05} {
+    \draw [thin, gray, densely dotted] (0.3, \y) -- (\hdE, \y);
+  };
+  %railway lines
+  \foreach \y in {0, 1.8, 3.6} {
+    % background
+    \fill [black!20!white] {(
+      0, \y+0.2) rectangle (\hdA, \y+1.1)
+      (\hdB, \y+0.2) rectangle (\hdC, \y+1.1)
+      (\hdD, \y+0.2) rectangle (\hdE+0.3, \y+1.1)
+    };
+    % longitudinal railway lines
+    \draw [thick] {
+      (0, \y+0.55) -- (\hdA, \y+0.55)
+      (\hdB, \y+0.55) -- (\hdC, \y+0.55)
+      (\hdD, \y+0.55) -- (\hdE+0.3, \y+0.55)
+      (0, \y+0.75) -- (\hdA, \y+0.75)
+      (\hdB, \y+0.75) -- (\hdC, \y+0.75)
+      (\hdD, \y+0.75) -- (\hdE+0.3, \y+0.75)
+    };
+    % railway ties (Bahnschwellen)
+    \foreach \x in {0.15, 0.35, ..., \hdAm, \hdBp, \hdBpp, ..., \hdCm, \hdDp, \hdDpp, ..., \hdEm} {
+      \draw[very thick] (\x, \y+0.45) -- (\x, \y+0.85);
+     }
+    % horizontal delimiters of background
+    \draw {
+      (0.3, \y+0.2) -- (\hdA, \y+0.2)
+      (\hdB, \y+0.2) -- (\hdC, \y+0.2)
+      (\hdD, \y+0.2) -- (\hdE, \y+0.2)
+      (0.3, \y+1.1) -- (\hdA, \y+1.1)
+      (\hdB, \y+1.1) -- (\hdC, \y+1.1)
+      (\hdD, \y+1.1) -- (\hdE, \y+1.1)
+    };
+    % vertical delimiters of background
+    \draw {
+      (\hdA, \y+0.1) -- (\hdA, \y+1.2)
+      (\hdB, \y+0.1) -- (\hdB, \y+1.2)
+      (\hdC, \y+0.1) -- (\hdC, \y+1.2)
+      (\hdD, \y+0.1) -- (\hdD, \y+1.2)
+    };
+    % activity areas below railway lines
+    \fill [pattern=north east lines] {
+      (1*0.3, \y+0.2) rectangle (\hdA, \y+0.2+0.1)
+      (\hdB, \y+0.2) rectangle (\hdC, \y+0.2+0.1)
+      (\hdD, \y+0.2) rectangle (\hdE, \y+0.2+0.1)
+    };
+    % activity areas above railway lines	
+    \fill [pattern=north east lines] {
+      (1*0.3, \y+1.1) rectangle (3*0.3, \y+1.1-0.1)
+      (\hdB, \y+1.1) rectangle (\hdC, \y+1.1-0.1)
+      (\hdD, \y+1.1) rectangle (\hdE, \y+1.1-0.1)
+    };
+    % topological areas related to railway lines
+    % horizontal solid
+    \draw [red, dashed] {
+      (\hdA, \y+0.2) -- (\hdB, \y+0.2)
+      (\hdC, \y+0.2) -- (\hdD, \y+0.2)
+      (\hdA, \y+1.1) -- (\hdB, \y+1.1)
+      (\hdC, \y+1.1) -- (\hdD, \y+1.1)
+    };
+    % horizonal dashed
+    \draw [red, dashed] {
+      (1*0.3, \y+0.2) -- (\hdA, \y+0.2)
+      (\hdB, \y+0.2) -- (\hdC, \y+0.2)
+      (\hdD, \y+0.2) -- (\hdE, \y+0.2)
+      (1*0.3, \y+1.1) -- (\hdA, \y+1.1)
+      (\hdB, \y+1.1) -- (\hdC, \y+1.1)
+      (\hdD, \y+1.1) -- (\hdE, \y+1.1)
+    };
+    % vertical (dashed)
+    \draw [red, dashed] {
+      (\hdA, \y+0.2) -- (\hdA, \y+1.1)
+      (\hdB, \y+0.2) -- (\hdB, \y+1.1)
+      (\hdC, \y+0.2) -- (\hdC, \y+1.1)
+      (\hdD, \y+0.2) -- (\hdD, \y+1.1)
+    };
+				
+  };
+  % topological areas related to passageways
+  \draw [red, dashed] {
+    (\hdA, 0.2+3*0.3) -- (\hdA, 0.2+6*0.3)
+    (\hdA, 0.2+9*0.3) -- (\hdA, 0.2+12*0.3)
+    (\hdB, 0.2+3*0.3) -- (\hdB, 0.2+6*0.3)
+    (\hdB, 0.2+9*0.3) -- (\hdB, 0.2+12*0.3) 
+    (\hdC, 0.2+3*0.3) -- (\hdC, 0.2+6*0.3)
+    (\hdC, 0.2+9*0.3) -- (\hdC, 0.2+12*0.3)
+    (\hdD, 0.2+3*0.3) -- (\hdD, 0.2+6*0.3)
+    (\hdD, 0.2+9*0.3) -- (\hdD, 0.2+12*0.3)
+  };
+  
+  \draw [red, dashed] (8*0.3, -0.1+16*0.3) -- (8*0.3, -0.1+18*0.3);
+  \fill [red!10!white] (10*0.3, -0.1+10*0.3) rectangle (13*0.3, -0.1+13*0.3);
+  %illustration of topological area
+		
+  %illustration of cell
+  \potF{9}{5}{5}
+		
+  % Routes
+  \draw [thick, red, -latex] {
+    (7.5*0.3, 18*0.3-0.1) to [out = 270, in = 90]
+    (4.5*0.3, 16*0.3-0.1) to node[left] {\small{\circled{1}}}
+    (4.5*0.3, 7*0.3-0.1) to [out=270, in=180]
+    (6*0.3, 5.5*0.3-0.1) to [out = 0, in = 270]
+    (7.5*0.3, 7*0.3-0.1)
+  };
+  \draw [thick, red, -latex] {
+    (8.5*0.3, 18*0.3-0.1) to [out = 270, in = 90]
+    (11.5*0.3, 16*0.3-0.1) to node[left] {\small{\circled{2}}}
+    (11.5*0.3, 7*0.3-0.1) to [out=270, in=0]
+    (10*0.3, 5.5*0.3-0.1) to [out = 180, in = 270]
+    (8.5*0.3, 7*0.3-0.1)
+  };
+
+  % Paths
+  \draw [blue, -latex] {
+    (6.5*0.3, 18*0.3-0.1) to
+    (6.5*0.3, 17.5*0.3-0.1) to
+    (4.5*0.3, 17.5*0.3-0.1) to
+    (4.5*0.3, 15.5*0.3-0.1) to
+    (3.5*0.3, 15.5*0.3-0.1) to
+    (3.5*0.3, 12.5*0.3-0.1) to
+    (4.5*0.3, 12.5*0.3-0.1) to
+    (4.5*0.3, 5.5*0.3-0.1) to
+    (6.5*0.3, 5.5*0.3-0.1) to
+    (6.5*0.3, 4.5*0.3-0.1) to
+    (8.5*0.3, 4.5*0.3-0.1) to
+    (8.5*0.3, 7*0.3-0.1)
+  };
+		
+  \draw [blue, -latex] {
+    (7.5*0.3, 18*0.3-0.1) to
+    (7.5*0.3, 16.5*0.3-0.1) to
+    (5.5*0.3, 16.5*0.3-0.1) to
+    (5.5*0.3, 6.5*0.3-0.1) to
+    (7.5*0.3, 6.5*0.3-0.1) to
+    (7.5*0.3, 7*0.3-0.1)
+  };
+		
+  \draw (8*0.3, -0.1+18*0.3) -- node [below, red] {\footnotesize origin} (8*0.3, -0.1+18*0.3);
+  \draw (8*0.3, -0.1+7*0.3) -- node [below, red] {\footnotesize destination} (8*0.3, -0.1+7*0.3);
+  \fill [pattern=north east lines, pattern color=red] (\hdB, 1.8+0.2) rectangle (\hdC, 1.8+0.2+0.1);
+  \fill [pattern=north east lines, pattern color=red] (\hdB, 5.3) rectangle (\hdC, 5.425);
+  
+  \node at (0.3*13, -0.2+0.3*17.5) (WA1) {}; % pointer for walkable area
+  \node at (0.3*14, -0.2+0.3*16) (EEP1) {}; % pointer for exit/entry points
+  \node at (0.3*12, -0.15+0.3*11.5) (TPA1) {}; % pointer for topological area
+  \node at (0.3*9.25, -0.15+0.3*4.5) (DC1) {}; % pointer for discretization cell
+\end{tikzpicture}

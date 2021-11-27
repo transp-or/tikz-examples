@@ -1,0 +1,16 @@
+\begin{tikzpicture}[blue, thick]
+  \node[draw, circle] (V1) at (3, 4) {};
+  \node[draw, circle] (V2) at (1, 2) {};
+  \node[draw, circle] (V3) at (5, 2) {};
+  \node[draw, circle] (V4) at (0, 0) {};
+  \node[draw, circle] (V5) at (2, 0) {};
+  \node[draw, circle] (V6) at (4, 0) {};
+  \node[draw, dotted, circle] (V7) at (6, 0) {};
+
+  \draw[-latex] (V1) -- (V2);
+  \draw[-latex] (V1) -- (V3);
+  \draw[-latex] (V2) -- (V4);
+  \draw[-latex] (V2) -- (V5);
+  \draw[-latex] (V3) -- (V6);
+  \draw[-latex, dotted] (V3) -- (V7);
+\end{tikzpicture}

@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+  \node[draw, circle] (Vi) at (0, 0) {$i$} ;
+  \node[draw, circle] (Vj) at (10, 0) {$j$} ;
+  \node (si) at (-1, 1) {$s_i$} ;
+  \node (sj) at (11, 1) {$s_j$} ;
+  \draw[dotted] (si) -- (Vi) ;
+  \draw[dotted] (sj) -- (Vj) ;
+  \draw[-latex] (Vi) -- (Vj) node[midway, above]
+       {$x'_{ij}(0, u_{ij})$} node[midway, below] {$c_{ij}$} ;
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+  \begin{axis}[
+      domain=-1.5:1.5,
+      domain y=-8:8
+    ]
+    \addplot3[
+      surf,
+      samples=51
+    ]
+             {0.5 * x^2 + x * cos(deg(y))};
+  \end{axis}
+\end{tikzpicture}
+

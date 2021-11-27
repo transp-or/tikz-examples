@@ -1,10 +1,15 @@
+\usepackage{etex}
+\usepackage[pspdf={-dDELAYSAFER}]{auto-pst-pdf}
 \usepackage{tikz}
 \usetikzlibrary{positioning, calc, arrows, arrows.meta, shapes, fit, spy, patterns}
 \usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.17}
 \usepackage{courier}
 \usepackage{listings}
 \lstset{basicstyle=\tiny\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt,frame=bottomline}
+\usepackage{epsfig}
 
 \newcommand{\withcode}[2]{
   \begin{figure}
@@ -12,7 +17,7 @@
       \input{#1} 
     \end{center}
     \lstinputlisting{#1}
-    \caption{#2}
+    \caption{\texttt{#1.tex}: #2}
 \end{figure}}
 
 
@@ -21,6 +26,5 @@
     \begin{center}
       \input{#1} 
     \end{center}
-    File: \texttt{#1.tex}
-    \caption{#2}
+    \caption{\texttt{#1.tex}: #2}
 \end{figure}}

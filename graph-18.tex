@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+  \tikzset{
+    >=stealth,
+    parent node/.style={
+      rectangle split,
+      rectangle split parts=2,
+      align=left,
+      text width=3cm,
+      draw,
+      node distance=1cm and 1cm
+    }
+  }
+  \node[
+    parent node,
+    rectangle split parts=1,
+    fill=gray!20
+  ] (A) {$P_0$ \\ $(2.5, 3.75)$ \\ $LB=-62.5$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 1,
+    below left =of A,
+    fill=gray!20
+  ] (B) {$P_1$ \\ $(2,4)$ \\ $f^*=-58$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 1,
+    below right =of A
+  ] (C) {$P_2$ \\ $(3,2.5)$ \\ $LB=-59$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 1,
+    below left =of C
+  ] (D) {$P_{21}$ \\ $(3.2, 2)$ \\ $LB=-57.6$};
+  \node[
+    parent node,
+    rectangle split parts=1,
+    node distance=1.2 and 1,
+    below right =of C
+  ] (E) {$P_{22}$ \\ Infeasible};
+  
+  \draw[->](A)--(B) node[midway,above,sloped] {$x_1 \leq 2$};
+  \draw[->](A)--(C) node[midway,above,sloped] {$x_1 \geq 3$};
+  \draw[->](C)--(D) node[midway,above,sloped] {$x_2 \leq 2$};
+  \draw[->](C)--(E) node[midway,above,sloped] {$x_2 \geq 3$};
+\end{tikzpicture}

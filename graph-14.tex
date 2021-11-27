@@ -1,0 +1,53 @@
+\begin{tikzpicture}[blue, thick]
+  \node (Bier) at (0, 0) [
+    circle,
+    fill,
+    label=left:\epsfig{figure=Bierlaire1971, height=1.5cm}
+  ] {};
+  \node (Kand) at (0, 2) [
+    circle,
+    fill,
+    label=left:\epsfig{figure=kandinski1923, height=1.5cm}
+  ] {};
+  \node (Brue) at (0, 4) [
+    circle,
+    fill,
+    label=left:\epsfig{figure=Bruegel1558, height=1.5cm}
+  ] {};
+  \node (Bott) at (0, 6) [
+    circle,
+    fill,
+    label=left:\epsfig{figure=botticelli1485, height=1.5cm}
+  ] {};
+  \node (Ginn) at (7, 0) [
+    circle,
+    fill,
+    label=right:Ginny
+  ] {};
+  \node (Herm) at (7, 2) [
+    circle,
+    fill,
+    label=right:Hermione
+  ] {};
+  \node (Ron) at (7, 4) [
+    circle,
+    fill,
+    label=right:Ron
+  ] {};
+  \node (Harr) at (7, 6) [
+    circle,
+    fill,
+    label=right:Harry
+  ] {};
+
+  \draw[->, -latex] (Bott) -- (Harr) node[midway, text=red, fill=white] {$-8000$} ;
+  \draw[->, -latex] (Bott) -- (Ron) node[near end, text=red, fill=white] {$-9000$} ;
+  \draw[->, -latex] (Bott) -- (Herm) node[near start, text=red, fill=white] {$-9000$} ;
+  \draw[->, -latex] (Brue) -- (Harr) node[near end, text=red, fill=white] {$-11000$} ;
+  \draw[->, -latex] (Brue) -- (Ron) node[near end, text=red, fill=white] {$-13000$} ;
+  \draw[->, -latex] (Brue) -- (Ginn) node[near start, text=red, fill=white] {$-14000$} ;
+  \draw[->, -latex] (Kand) -- (Ron) node[midway, text=red, fill=white] {$-12000$} ;
+  \draw[->, -latex] (Kand) -- (Herm) node[near end, text=red, fill=white] {$-11000$} ;
+  \draw[->, -latex] (Kand) -- (Ginn) node[near start, text=red, fill=white] {$-12000$} ;
+  \draw[->, -latex] (Bier) -- (Herm) node[near start, text=red, fill=white] {$-0.01$} ;
+\end{tikzpicture}

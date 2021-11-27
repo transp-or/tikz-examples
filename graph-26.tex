@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+  \draw[thick, |-|] (1.2, -8) -- (1.2, 4); 
+  \node [circle, draw] (a) {Alex};
+  \node [circle, draw] (b) [below=of a] {Bob};
+  \node [circle, draw] (d) [below=of b] {Dan};
+  \node [circle, draw] (f) [below left=of d] {Donald};
+  \node [circle, draw] (c) [right=of b] {Carla};
+  \node [circle, draw] (e) [below=of c] {Eva};
+  \node [circle, draw] (g) [above=of a] {Gregor};
+  \node [circle, draw] (h) [right=of g] {Hilda};
+  \draw [-latex] (g) to [bend left=5](h);
+  \draw [latex-] (g) to [bend right=5] (h);
+  \draw [-latex] (a) to (f);
+  \draw [-latex] (b) to (f);
+  \draw [-latex] (c) to [in=270, out=0] (f);
+  \draw [-latex] (d) to (f);
+  \draw [-latex] (e) to (f);
+  \draw [-latex] (a) to [bend left=5] (b);
+  \draw [-latex] (b) to [bend left=5](c);
+  \draw [-latex] (d) to [bend left=5](e);
+  \draw [-latex] (b) to [bend left=5] (e);
+  \draw [-latex] (a) to [bend left=10] (d);
+  \draw [latex-] (a) to [bend right=5](b);
+  \draw [latex-] (b) to [bend right=5](c);
+  \draw [latex-] (d) to [bend right=5](e);
+  \draw [latex-] (b) to [bend right=5] (e);
+  \draw [latex-] (a) to [bend right=10] (d);
+\end{tikzpicture}
+

@@ -1,0 +1,17 @@
+\definecolor{cof}{RGB}{219, 144, 71}
+\begin{tikzpicture}[
+  spy using outlines={cof, magnification=2, size=4cm, connect spies}
+]
+  \draw[-latex] (-3, 0) -- (3, 0) node[right] {$x$};
+  \draw[-latex] (0, 0) -- (0, 4.5) node[above] {$f(x)$};
+  \draw[
+    domain=-3:3,
+    smooth,
+    variable=\x,
+    blue] plot ({\x}, {\x * \x / 2.0});
+  \node[red] at (-2, 2) {\textbullet};
+  \draw[red] (-3, 4) -- (0, -2) ;
+  \draw[dotted] (-3, 2) -- (3, 2) ;
+  \spy on (-2, 2) in node[fill=white] at (3, 3);
+\end{tikzpicture}
+

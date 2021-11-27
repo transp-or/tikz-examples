@@ -1,0 +1,35 @@
+\definecolor{cof}{RGB}{219,144,71}
+\definecolor{greeo}{RGB}{91,173,69}
+\definecolor{greet}{RGB}{52,111,72}
+\begin{tikzpicture}[blue]
+  \begin{axis}[
+      view={60}{20},
+      enlargelimits=false,
+      domain=-0.1:1.1,
+      y domain=-0.1:1.1,
+      zmin=-4,
+      zmax=1,  
+      samples=21,
+      xlabel=$x_1$,
+      ylabel=$x_2$,
+      zlabel={$-x_1 - 2x_2$},
+    ]
+    % Objective function
+    \addplot3[surf, opacity=1] {-x -2*y };
+    \draw[cof, fill=cof!20] {
+      (axis cs:0, 0, -4) --
+      (axis cs: 0, 1, -4) --
+      (axis cs: 1, 0, -4) -- (axis cs:0, 0, -4)}
+    ;
+    % Level curve -0.5
+    \draw[
+      greeo,
+      thick
+    ] (axis cs: -0.1, 0.3, -4) -- (axis cs: 1.1, -0.3, -4)
+    node[midway, above, sloped] (f1) {$-0.5$} ;
+    
+    \draw[red, -latex, thick] (axis cs:0, 0) -- (axis cs:0.25, 0.5)
+      node[right] {$-\nabla f(x) = -c$};
+  \end{axis}
+\end{tikzpicture}
+

@@ -1,0 +1,37 @@
+\begin{tikzpicture}[scale=0.6]
+  \tikzstyle{every node}=[
+    minimum width=3cm, 
+    align=center, 
+  ]
+  \tikzstyle{ellipse node}=[
+    draw, ellipse, text width=2.2cm, align=center
+  ]
+  \tikzstyle{rect node}=[
+    draw, rectangle, text width=2.2cm, align=center
+  ]
+  \node (U) [ellipse node] {Utilities} ;
+  \node (LC) [ellipse node, above left = 1cm of U] {Latent classes};
+  \node (EV) [rect node, above = 2cm of U] {Explanatory variables} ;
+  \node (C) [rect node, below = 2cm of U] {Choice} ;
+  \node (DLC) [above left = 0.5cm and -0.5cm of LC] {Disturbances} ;
+  \node (DU) [above right = 0.5cm and -0.5cm of U] {Disturbances} ;
+  \draw[-latex, dotted] (DLC) -- (LC.north west) ;
+  \draw[-latex, dotted] (DU) -- (U.north east) ;
+  \draw[-latex] (EV.south west) -- (LC.north east) ;
+  \draw[-latex] (EV.south) -- (U.north) ;
+  \draw[-latex] (LC.south east) -- (U.north west) ;
+  \draw[-latex, dashed] (U.south) -- (C.north) ;
+  \draw [
+    very thick, 
+    decorate, 
+    decoration={brace, amplitude=10pt, raise=2.5pt}, 
+  ] (C.south east) -- (C.south west)
+    node [midway, below=0.5cm] {\bf Class specific \\ \bf Choice Model};
+  \draw [
+    very thick, 
+    decorate, 
+    decoration={brace, amplitude=10pt, raise=2.5pt}, 
+  ] (LC.south -| DLC.west)-- (EV.north -| DLC.west)
+    node [midway, left=0.5cm] {\bf Class \\ \bf Membership \\ \bf Model};
+\end{tikzpicture}
+

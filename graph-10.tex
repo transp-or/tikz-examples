@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+  \node[draw, circle] (Vi) at (0, 0) {$i$} ;
+  \node[draw, circle] (Vj) at (10, 0) {$j$} ;
+  \node[draw, circle] (slack) at (5, 0) {} ;
+  \node (demand) at (5, 1) {$u_{ij}$} ;
+  \node (si) at (-1, 1) {$s_i-u_{ij}$} ;
+  \node (sj) at (11, 1) {$s_j$} ;
+  \draw[dotted] (si) -- (Vi) ;
+  \draw[dotted] (sj) -- (Vj) ;
+  \draw[dotted] (slack) -- (demand) ;
+  \draw[-latex] (slack) -- (Vi) node[midway, above]
+       {$y_{ij}(0, +\infty)$} node[midway, below] {$0$} ;
+  \draw[-latex] (slack) -- (Vj) node[midway, above]
+       {$x'_{ij}(0, +\infty)$} node[midway, below] {$c_{ij}$} ;
+\end{tikzpicture}
+

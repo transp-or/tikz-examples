@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \begin{axis}[
+      ybar,
+      ymin=0,
+      xlabel=Revenue,
+      ylabel = Frequency, 
+      enlarge y limits=0.05
+    ]
+    \addplot+[gray!20!black, fill=gray!80!white, 
+      hist={
+	bins=10, 
+	data min=25.8, 
+	data max=26.3, 
+      }   
+    ] table [y index=0] {revenues.csv};
+  \end{axis}
+\end{tikzpicture}

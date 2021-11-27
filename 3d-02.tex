@@ -1,0 +1,32 @@
+\begin{tikzpicture}[scale=0.8]
+  \begin{axis}[
+      width=12cm,
+      view={20}{40},
+      enlargelimits=false,
+      domain=-2:2,
+      y domain=-6.28:6.28,
+      zmin=-3,
+      zmax=2,    
+      samples=21,
+      xlabel=$x_1$,
+      ylabel=$x_2$,
+      zlabel={$\frac{1}{2} x_1^2 + x_1 \cos x_2$},
+    ]
+    \addplot3[
+      no markers,
+      blue,
+      raw gnuplot,
+      z filter/.code={\def\pgfmathresult{ -3 }},
+      mesh=false
+    ] gnuplot {
+      set contour base;
+      set nosurface;
+      set cntrparam levels 15;
+      set isosamples 100;
+      set samples 50;
+      splot [-2:2][-6.28:6.28] 0.5 * x * x + x * cos(y) ;
+    };
+    \addplot3[surf,opacity=1]  { 0.5 * x * x + x * cos(deg(y)) };
+  \end{axis}
+\end{tikzpicture}
+

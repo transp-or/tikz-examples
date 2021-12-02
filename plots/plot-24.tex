@@ -3,14 +3,25 @@
     b0 = 1.0 ;
     b1 = 0.4 ;
     b2 = 0.6 ;
+    I = 14 ;
+    p1 = 10 ;
+    p2 = 10 ; 
+    q1star = I * b1 / (p1 * (b1 + b2)) ;
+    q2star = I * b2 / (p2 * (b1 + b2)) ;
     cobbdouglas(\x,\y) = b0 * \x ^ b1 * \y ^ b2  ;
   }
 ]
   \begin{axis}[
       view={0}{90},
-      domain=0.1:20,
-      domain y=0.1:20,
+      domain=0.0:1.5,
+      domain y=0.0:1.5,
       zmin=0,
+      xtick=\empty,
+      ytick=\empty,
+      extra x ticks={q1star, {I/p1}},
+      extra x tick labels={$q_1^*$, $I/p_1$},
+      extra y ticks={q2star, {I/p2}},
+      extra y tick labels={$q_2^*$, $I/p_2$},
       xlabel=$q_1$,
       ylabel=$q_2$,
       zlabel={$\widetilde{U}(q_1, q_2)= \theta_0 q_1^{\theta_1} q_2^{\theta_2}$},
@@ -20,7 +31,9 @@
     ]{
       cobbdouglas(x, y)
     };
-    \node [circle, draw, fill, label={$A$}, minimum size=4pt, inner sep=0pt] at (5, 15.87) {} ;
-    \node [circle, draw, fill, label={$B$}, minimum size=4pt, inner sep=0pt] at (15, 7.63) {} ;
+    \node [circle, draw, fill, label={$q^*$}, minimum size=4pt, inner sep=0pt] at (q1star, q2star) {} ;
+    \draw[thick] (0,{I/p1}) -- node[above, sloped, pos=0.6] {$p_1q_1+p_2q_2=I$}({I/p2},0) ;
+    \draw[dotted] (0, q2star) -- (q1star, q2star) ;
+    \draw[dotted] (q1star, 0) -- (q1star, q2star) ;
   \end{axis}
 \end{tikzpicture}

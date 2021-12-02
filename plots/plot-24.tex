@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  declare function = {
+    b0 = 1.0 ;
+    b1 = 0.4 ;
+    b2 = 0.6 ;
+    cobbdouglas(\x,\y) = b0 * \x ^ b1 * \y ^ b2  ;
+  }
+]
+  \begin{axis}[
+      view={0}{90},
+      domain=0.1:20,
+      domain y=0.1:20,
+      zmin=0,
+      xlabel=$q_1$,
+      ylabel=$q_2$,
+      zlabel={$\widetilde{U}(q_1, q_2)= \theta_0 q_1^{\theta_1} q_2^{\theta_2}$},
+    ]
+    \addplot3[
+      contour gnuplot={labels=false, number=40, handler/.style=smooth},
+    ]{
+      cobbdouglas(x, y)
+    };
+    \node [circle, draw, fill, label={$A$}, minimum size=4pt, inner sep=0pt] at (5, 15.87) {} ;
+    \node [circle, draw, fill, label={$B$}, minimum size=4pt, inner sep=0pt] at (15, 7.63) {} ;
+  \end{axis}
+\end{tikzpicture}

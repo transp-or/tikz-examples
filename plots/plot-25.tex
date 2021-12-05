@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  scale=0.9,
+  declare function={
+    normpdf(\x,\mu,\sigma)=1/(\sigma * sqrt(2 * pi)) * exp(-((\x
+    -\mu)^2)/(2 * \sigma^2));
+    mydensity(\x) = normpdf(\x, 0.72, 0.014198591479439);
+  }
+]
+  \begin{axis}[
+      xlabel=$\widehat{\theta}_1$,
+      ymin=0,
+    ]
+    \addplot [
+      fill=orange!75,
+      draw=orange!50!black,
+      hist=density
+    ] table [y index=0] {histogram.dat};
+    \addplot[domain=0.67:0.78, samples=120, thick, blue] {mydensity(x)} ;
+  \end{axis}
+\end{tikzpicture}

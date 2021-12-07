@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  lnode/.style = {
+    draw,
+    text centered,
+    text width=3cm,
+    fill=yellow!25,
+    transform shape,
+  },
+  rnode/.style = {
+    draw,
+    text centered, 
+    text width=3cm,
+    rounded corners=4pt,
+    fill=blue!25,
+    transform shape,
+  }
+]
+  \node[lnode] (SPEC) {Specification};
+  \node[rnode, right=3cm of SPEC] (THEORY) {Theory};
+  \node[right=1cm of THEORY] (ATHEORY) {};
+  \node[lnode, below=1cm of SPEC] (ESTIM) {Estimation};
+  \node[rnode, right=3cm of ESTIM] (DATA) {Data};
+  \node[right=1cm of DATA] (ADATA) {};
+  \node[lnode, below=1cm of ESTIM] (PRED) {Prediction};
+  \node[rnode, right=3cm of PRED] (SCEN) {Scenarios};
+  \node[lnode, below=1cm of PRED] (DEC) {Analysis, decision};
+  \draw[-latex, thick] (THEORY) -- (SPEC) ;
+  \draw[-latex, thick] (DATA) -- (ESTIM) ;
+  \draw[-latex, thick] (SCEN) -- (PRED) ;
+  \draw[-latex, thick] (SPEC) -- (ESTIM) ;
+  \draw[-latex, thick] (ESTIM) -- coordinate [pos=0.5] (MIDWAY) (PRED) ;
+  \path let \p1=(MIDWAY), \p2=(ADATA) in node (ANCHOR) at (\x2,\y1) {};
+  \draw[-latex, thick, dotted] {
+    (MIDWAY.center) --
+    (ANCHOR.center) --
+    (ADATA.center) --
+    (DATA)
+  };
+  \draw[-latex, thick, dotted] (ADATA.center) |- (THEORY) ;
+  \draw[-latex, thick] (PRED) -- (DEC) ;
+\end{tikzpicture}

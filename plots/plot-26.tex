@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=0.7]
+  \begin{axis}[
+      xmin=0,
+      xmax=14,
+      xlabel=Household monthly income (CHF),
+      ylabel=Daily distance traveled (km),
+    ]
+    \addplot[only marks] coordinates {
+      (2, 22.49)
+      (6, 36.11) 
+      (10, 45.35)
+      (12, 51.59)
+    };
+    \addplot[red, domain=0:14] {
+      2.84186441 * x + 17.571016949152533  
+    };
+    \addplot[orange!20, domain=0:14, name path=left] {
+      2.84186441 * x + 17.571016949152533 - 2.576 * 0.804
+    };
+    \addplot[orange!20, domain=0:14, name path=right] {
+      2.84186441 * x + 17.571016949152533 + 2.576 * 0.804
+    };
+    \addplot [orange!40] fill between[of=left and right] ;
+  \end{axis}
+\end{tikzpicture}

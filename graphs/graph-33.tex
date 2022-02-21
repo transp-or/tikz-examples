@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+  \node[draw, diamond, blue] (o1) at (0,3.5) {$a$} ;
+  \node[draw, diamond, blue] (o2) at (5,0) {$b$} ;
+  \node[draw, diamond, blue] (o3) at (4.5,5) {$c$} ;
+  \node[draw, circle, orange] (i1) at (1,2) {$1$} ;
+  \node[draw, circle, orange] (i2) at (3,2) {$2$} ;
+  \node[draw, circle, orange] (i3) at (5,2) {$3$} ;
+  \node[draw, circle, orange] (i4) at (3,0) {$4$} ;
+  \node[draw, circle, orange] (i5) at (3,4) {$5$} ;
+  \draw[-latex] (i1.345) -- (i2.195) ;
+  \draw[-latex] (i2.165) -- (i1.15) ;
+  \draw[-latex] (i2.345) -- (i3.195) ;
+  \draw[-latex] (i3.165) -- (i2.15) ;
+  \draw[-latex] (i4) -- (i2) ;
+  \draw[-latex] (i2) -- (i5) ;
+  \draw[latex-latex] (o1) -- (i1) ;
+  \draw[-latex] (i5) -- (o1) ;
+  \draw[-latex] (i5) -- (o3) ;
+  \draw[-latex] (o2) -- (i4) ;
+  \draw[latex-latex] (o2) -- (i3) ;
+\end{tikzpicture}

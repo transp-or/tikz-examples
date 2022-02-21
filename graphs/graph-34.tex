@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+  \draw (0,3) -- (7,3) ;
+  \draw[dashed] (0,2) -- (7,2) ;
+  \draw[dashed] (0,1) -- (2,1) ;
+  \draw[dashed] (5,1) -- (7,1) ;
+  \draw (0,0) -- (1,0) ;
+  \draw (1, 0) .. controls (2,0) and (1, 1) .. (2,1);
+  \draw (2,1) -- (5,1) ;
+  \draw (5, 1) .. controls (6,1) and (5, 0) .. (6,0);
+  \draw (6,0) -- (7,0) ;
+  
+  \node (N0) at (0, 4) {}; 
+  \node[draw, circle, orange] (N1) at (2, 4) {}; 
+  \node[draw, circle, orange] (N2) at (5, 4) {}; 
+  \node (N3) at (7, 4) {};
+  \draw[->latex, orange] (N0) -- (N1) -- (N2) -- (N3) ;
+  
+  % Car
+  \begin{scope}[shift={(1.5,2.2)}]
+    \fill (0, 0) rectangle (1, 0.3) ;
+    \fill (0.2, 0.3) rectangle (0.7, 0.5) ;
+    \fill (0.2, 0) circle (0.1) ;
+    \fill (0.8, 0) circle (0.1) ;
+  \end{scope}
+  \begin{scope}[shift={(2.5,1.2)}]
+    \fill (0, 0) rectangle (1, 0.3) ;
+    \fill (0.2, 0.3) rectangle (0.7, 0.5) ;
+    \fill (0.2, 0) circle (0.1) ;
+    \fill (0.8, 0) circle (0.1) ;
+  \end{scope}
+  \begin{scope}[shift={(4,2.2)}]
+    \fill (0, 0) rectangle (1, 0.3) ;
+    \fill (0.2, 0.3) rectangle (0.7, 0.5) ;
+    \fill (0.2, 0) circle (0.1) ;
+    \fill (0.8, 0) circle (0.1) ;
+  \end{scope}
+  \begin{scope}[shift={(6.2,0.2)}]
+    \fill (0, 0) rectangle (1, 0.3) ;
+    \fill (0.2, 0.3) rectangle (0.7, 0.5) ;
+    \fill (0.2, 0) circle (0.1) ;
+    \fill (0.8, 0) circle (0.1) ;
+  \end{scope}
+\end{tikzpicture}

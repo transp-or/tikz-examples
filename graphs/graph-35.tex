@@ -1,0 +1,22 @@
+\begin{tikzpicture}[blue, scale=0.8]
+  \coordinate (C) at (6, 3) ;
+  \begin{scope}
+    \clip (0,0) rectangle (C) ;
+    \node (S) at (0,0)
+          {\epsfig{figure=snakes.eps,width=100mm,height=60mm}} ;
+  \end{scope}
+  \coordinate (O) at (0,0) ;
+  \coordinate (X2) at (0, 6) ;
+  % Multiply by 4 to be far enough to obtain the intersection.
+  \coordinate (T) at ( $ (X2)!4!(C) $ ) ;
+  \path[name path=thescale] (X2) -- (T) ;
+  \path[name path=theaxis] (O) -- (35, 0) ;
+  \path[name intersections={of=thescale and theaxis, by={X1}}] ;
+  \draw[very thick, orange] (X1) -- (X2) ;
+  \draw[thick, -latex] (O) -- ( $ (O)!1.1!(X1) $ ) ;
+  \draw[thick, -latex] (O) -- ( $ (O)!1.1!(X2) $ ) ;
+  \node[label=below:$x_1$] at (X1) {} ;
+  \node[label=left:$x_2$] at (X2) {} ;
+  \draw[latex-latex] (0,-0.2) -- (6, -0.2) node[midway, below] {$\ell=10m$} ;
+  \draw[latex-latex] (-0.2,0) -- (-0.2, 3) node[midway, left] {$h=5m$} ;
+\end{tikzpicture}

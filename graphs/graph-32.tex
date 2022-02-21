@@ -1,0 +1,52 @@
+% Requires \usepackage{tikz-cd}
+\begin{tikzpicture}[
+  scale=1.0,
+  every node/.style={transform shape},
+  lnode/.style = {},
+  bnode/.style = {
+    draw,
+    text centered,
+    text width=4cm,
+    minimum width=4cm,
+    minimum height=2cm,
+  },
+  frame_public/.style = {
+    line width=2pt,
+    draw=orange,
+    inner sep=10pt,
+    minimum height=9cm,
+  },
+  frame_household/.style = {
+    line width=2pt,
+    draw=blue,
+    inner sep=10pt,
+    minimum height=9cm,
+  },
+  shift left/.style = {commutative diagrams/shift left={#1}},
+  ]
+  \node[bnode] (LAND) {Urban planning \\ Land-use};
+  \node[bnode, right=2cm of LAND] (LIFESTYLE) {Lifestyle \\ Mobility decisions};
+  \node[lnode, left=of LAND] (LONG) {\textbf{Long-term}};
+  \node[bnode, below=of LAND] (REGUL) {Regulations \\ Opening hours};
+  \node[bnode, right=2cm of REGUL] (ACTIVITY) {Activity scheduling \\ Travel plans};
+  \node[lnode, left=of REGUL] (MID) {\textbf{Mid-term}};
+  \node[bnode, below=of REGUL] (CRISIS) {Crisis management \\ Lockdown};
+  \node[bnode, right=2cm of CRISIS] (RESCHEDULING) {Real-time information \\ Rescheduling};
+  \node[lnode, left=of CRISIS] (SHORT) {\textbf{Short-term}};
+  \node[
+    frame_public,
+    fit=(LAND) (REGUL) (CRISIS),
+    label=\textbf{Public authorities}
+  ] (PUBLIC) {};
+  \node[
+    frame_household,
+    fit=(LIFESTYLE) (ACTIVITY) (RESCHEDULING),
+    label=\textbf{Households/individuals},
+  ] (HOUSEHOLD){};
+  
+  \path[-latex, shift left=1cm] {(LAND) edge (REGUL) (REGUL) edge (LAND) (REGUL) edge (CRISIS) (CRISIS) edge (REGUL) (LIFESTYLE) edge (ACTIVITY)
+    (ACTIVITY) edge (LIFESTYLE) (ACTIVITY) edge (RESCHEDULING) (RESCHEDULING) edge (ACTIVITY)      
+  };  
+
+    \path[-latex, thick, shift left=1.5cm] {(PUBLIC) edge (HOUSEHOLD) (HOUSEHOLD) edge (PUBLIC) };  
+\end{tikzpicture}

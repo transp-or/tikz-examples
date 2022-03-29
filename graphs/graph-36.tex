@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+  \coordinate (C1a) at (-6,3) ;
+  \coordinate (C1b) at (2,-1) ;
+  \coordinate (P1) at (-3, 4) ;
+  \coordinate (Q1a) at ($(C1a)!(P1)!(C1b)$) ;
+  \coordinate (Q1b) at ($(Q1a)!1cm!(P1)$) ;
+  \node[label=$C_a$] at (C1a) {$\bullet$};
+  \node[label=$C_b$] at (C1b) {$\bullet$};
+  \node[label=$P$] at (P1) {$\bullet$};
+  \node[label=$Q_a$] at (Q1a) {$\bullet$};
+  \node[label=$Q_b$] at (Q1b) {$\bullet$};
+  \draw[very thick, blue] (C1a) -- (C1b) node {Constr. 1};
+  \draw[-latex, orange]  (Q1a) -- (Q1b);
+  \coordinate (C2a) at (6,3) ;
+  \coordinate (C2b) at (-2,-1) ;
+  \coordinate (P2) at (3, 4) ;
+  \coordinate (Q2a) at ($(C2a)!(P2)!(C2b)$) ;
+  \coordinate (Q2b) at ($(Q2a)!1cm!(P2)$) ;
+  \draw[very thick, blue] (C2a) -- (C2b)  node {Constr. 2} ; 
+  \draw[-latex, orange] (Q2a) -- (Q2b);
+  \coordinate (C3a) at (5,4) ;
+  \coordinate (C3b) at (5,-1) ;
+  \coordinate (P3) at (4, 3.5) ;
+  \coordinate (Q3a) at ($(C3a)!(P3)!(C3b)$) ;
+  \coordinate (Q3b) at ($(Q3a)!1cm!(P3)$) ;
+  \draw[very thick, blue] (C3a) -- (C3b)  node {Constr. 3};
+  \draw[-latex, orange] (Q3a) -- (Q3b);
+  \node (0,0) [label={$x^*$}]  {$\bullet$};
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+  \tdplotsetmaincoords{63}{77}
+  \begin{tikzpicture}[scale=2, tdplot_main_coords]
+    \draw[blue, -latex] (0,0,0) -- (1.5,0,0) node[pos=0.9, below] {$q_1$};
+    \draw[blue, -latex] (0,0,0) -- (0,1.5,0) node[pos=0.9, below] {$q_2$};
+    \draw[blue, -latex] (0,0,0) -- (0,0,1.5) node[pos=0.9, left] {$q_3$};
+    \node[anchor=west] (A) at (0,1,1) {$p_1q_1 + p_2 q_2 + p_3q_3 = I$};
+     \draw[orange, fill=orange!20, opacity=0.6] {
+      (0, 0, 1) --
+      (0, 1, 0) --
+      (1, 0, 0) -- 
+      (0, 0, 1)
+      };
+    \draw[thick, -latex] (A) -- (0.5,.5,.5) ;
+  \end{tikzpicture}
